@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.gmail.eamosse.imdb.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home">
+
+        <argument
+            android:name="genre"
+            app:argType="integer" />
+
+        <action
+            android:id="@+id/action_HomeFragment_to_MovieListFragment"
+            app:destination="@id/movie_list_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/movie_list_fragment"
+        android:name="com.gmail.eamosse.imdb.ui.movie.list.MovieListFragment"
+        android:label="MovieListFragment"
+        tools:layout="@layout/fragment_movie_list">
+        <argument
+            android:name="genre"
+            app:argType="integer" />
+
+        <action
+            android:id="@+id/action_ListMoviesFragment_to_MovieDetailFragment"
+            app:destination="@id/navigation_movie_detail"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_movie_detail"
+        android:name="com.gmail.eamosse.imdb.ui.movie.detail.MovieDetailFragment"
+        android:label="Movie Detail"
+        tools:layout="@layout/fragment_movie_detail">
+
+        <argument
+            android:name="id"
+            app:argType="integer"/>
+
+        <action
+            android:id="@+id/action_MovieDetailFragment_to_MovieDetailFragment"
+            app:destination="@id/navigation_movie_detail"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_home_second"
+        android:name="com.gmail.eamosse.imdb.ui.home.HomeSecondFragment"
+        android:label="@string/home_second"
+        tools:layout="@layout/fragment_home_second">
+
+        <action
+            android:id="@+id/action_HomeSecondFragment_to_HomeFragment"
+            app:destination="@+id/navigation_home" />
+
+        <argument
+            android:name="myArg"
+            app:argType="string" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_dashboard"
+        android:name="com.gmail.eamosse.imdb.ui.dashboard.TrendingFragment"
+        android:label="@string/title_trending"
+        tools:layout="@layout/trending_fragment" />
+
+    <fragment
+        android:id="@+id/navigation_notifications"
+        android:name="com.gmail.eamosse.imdb.ui.notifications.NotificationsFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_notifications" />
+</navigation>
